@@ -20,7 +20,7 @@ I used Node Red as the primary programming environment, since it is great for th
 (I should of course add the code here, sometime in the future...)
 
 I figured out how the mechanics of the phone worked, and there was an unused set of pins in the hook switch (operated by the handset) that I could use. I used the circuit from the instructable (mentioned above), including a resistor, for the switch. There seems to be good timing in the code, so even if there were any bounces in the switch, it did not lead to multiple "calls". It just worked.
-(photo of pins to solder to, for fellow countrymen who happen to have one similar, https://sv.wikipedia.org/wiki/Diavox#/media/Fil:Diavox_1975.jpg , laying around, to be added)
+(photo of pins to solder to, to be added, for fellow countrymen who happen to have one similar, https://sv.wikipedia.org/wiki/Diavox#/media/Fil:Diavox_1975.jpg , laying around)
 
 So on this schematic: https://content.instructables.com/FSH/ERAR/HXMUWMGR/FSHERARHXMUWMGR.png
 I did not use the “rotary” and “dial” part of the circuit, because it was a push-button phone, and I won’t be using it to make calls.
