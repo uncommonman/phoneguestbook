@@ -8,7 +8,8 @@ The short overview is:
 
 I took inspiration from this project: https://www.instructables.com/Raspberry-Pi-in-Rotary-Phone/
 
-But I had a black telephone, so I did not use the old handset - changing loudspeaker and microphone etc, but instead I could use a handset meant to be used with a mobile phone, such as  ![Handset box](/z_15_handset_package.png) 
+But I had a black telephone, so I did not use the old handset - changing loudspeaker and microphone etc, but instead I could use a handset meant to be used with a mobile phone, such as:  
+![Handset box](/z_15_handset_package.png)  
 (https://www.prylstaden.se/svart-telefonlur-med-spiralsladd-till-iphone or https://www.amazon.com/Retro-Phone-Handset/s?k=Retro+Phone+Handset or similar)
 
 I got a small USB sound card and connected the handset to that, to avoid using the Raspberry Pi built in audio which in my experience can behave in "interesting ways".
@@ -23,7 +24,7 @@ I figured out how the mechanics of the phone worked, and there was an unused set
 (You'll find photos of pins to solder to below, for fellow countrymen who happen to have one similar, https://sv.wikipedia.org/wiki/Diavox#/media/Fil:Diavox_1975.jpg , laying around)
 
 So on this schematic: 
-![schematic](https://content.instructables.com/FSH/ERAR/HXMUWMGR/FSHERARHXMUWMGR.png)
+![schematic](https://content.instructables.com/FSH/ERAR/HXMUWMGR/FSHERARHXMUWMGR.png)  
 I did not use the “rotary” and “dial” part of the circuit, because it was a push-button phone, and I won’t be using it to make calls. I also used Pin 7 (and not 15).
 
 ## Components I used
@@ -80,7 +81,7 @@ From left to right.
 1. Something happens at Pin 7. (Which is connected to the handset "sensor").
 2. The Switch node figures out if it was lifting or putting down the handset that happened (off hook/on hook).
 3. The upper flow is for handset lifted.
-    1. Rename previous recording from default name to one with a timestamp.
+    1. Rename previous recording from default name to one with a timestamp. Play greeting/prompt
     2. Set input to true for recording stage.
     3. Start recording.
     4. Kick off backup of audio to USB stick.
