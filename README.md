@@ -19,13 +19,12 @@ I used a Raspberry Pi 4, because I had one laying around. The performance is pro
 
 I used Node Red as the primary programming environment, since it is great for this kind of IoT work, and found some suitable packages for handling the recording and interaction with the handset. I had to develop some shell scripts to handle some weaknesses in the packages. For example: the recording output filename was not dynamically configurable from the Node Red program, so after each new message (file), I copied it from the default name to a new name (and copied it over to the backup USB).
 
-(I should of course add the code here, sometime in the future...)
-
 I figured out how the mechanics of the phone worked, and there was an unused set of pins in the hook switch (operated by the handset) that I could use. I used the circuit from the instructable (mentioned above), including a resistor, for the switch. There seems to be good timing in the code, so even if there were any bounces in the switch, it did not lead to multiple "calls". It just worked.
 (photo of pins to solder to, to be added, for fellow countrymen who happen to have one similar, https://sv.wikipedia.org/wiki/Diavox#/media/Fil:Diavox_1975.jpg , laying around)
 
-So on this schematic: https://content.instructables.com/FSH/ERAR/HXMUWMGR/FSHERARHXMUWMGR.png
-I did not use the “rotary” and “dial” part of the circuit, because it was a push-button phone, and I won’t be using it to make calls.
+So on this schematic: 
+![schematic](https://content.instructables.com/FSH/ERAR/HXMUWMGR/FSHERARHXMUWMGR.png)
+I did not use the “rotary” and “dial” part of the circuit, because it was a push-button phone, and I won’t be using it to make calls. I also used Pin 7 (and not 15).
 
 ## Components I used
 
@@ -79,7 +78,7 @@ Occasionally there are Swedish words scattered amongst the files.
  ![Flow](/flow.png)
 From left to right.
 1. Something happens at Pin 7. (Which is connected to the handset "sensor").
-2. The Switch node figures out if it was lifting or putting down the handset that happened.
+2. The Switch node figures out if it was lifting or putting down the handset that happened (off hook/on hook).
 3. The upper flow is for handset lifted.
     1. Rename previous recording from default name to one with a timestamp.
     2. Set input to true for recording stage.
