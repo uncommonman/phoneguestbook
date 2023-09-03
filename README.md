@@ -36,7 +36,9 @@ Test your finished project/phone for changes in network access. You've probably 
 The problems I had may be due to the OS waiting for network connection, and it may be solved by setting ”S6 Network at Boot” in raspi-config to not wait for network, but I would definitely verify before relying on it.
 
 ## Files
-[flows.json]  An export of the flows in my node red. Mostly samples and debug stuff. Only one flow (that starts with Pin 7) is used, as far as I can remember.
+[flows.json](/flows.json)  An export of the flows in my node red. Mostly samples and debug stuff. Only one flow (that starts with Pin 7) is used, as far as I can remember.
+do_audiobackup
+do_audiobackup2
 
 ## Node red packages I have installed (may be some surplus)
 - node-red-contrib-micropi
@@ -68,4 +70,4 @@ From left to right.
 
 This is a very simple and brutal approach. Worked for me.
 The do_audiobackup has two stages. The first just kicks off the second one and returns as quickly as possible to the flow. The second one runs in the background and does any copying. If a file has already been copied, and exists on the target media, then it is not copied again. Works for the relatively limited number of greetings for one night. Room for improved sophistication if you expect to have thousands of files...
-9. 
+
