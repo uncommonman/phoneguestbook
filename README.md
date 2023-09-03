@@ -8,9 +8,8 @@ The short overview is:
 
 I took inspiration from this project: https://www.instructables.com/Raspberry-Pi-in-Rotary-Phone/
 
-But I had a black telephone, so I did not use the old handset - changing loudspeaker and microphone etc, but instead I could use a handset meant to be used with a mobile phone, such as 
---placeholder for photo--
-( https://www.amazon.com/Retro-Phone-Handset/s?k=Retro+Phone+Handset )
+But I had a black telephone, so I did not use the old handset - changing loudspeaker and microphone etc, but instead I could use a handset meant to be used with a mobile phone, such as  ![Handset box](/z_15_handset_package.png) 
+(https://www.prylstaden.se/svart-telefonlur-med-spiralsladd-till-iphone or https://www.amazon.com/Retro-Phone-Handset/s?k=Retro+Phone+Handset or similar)
 
 I got a small USB sound card and connected the handset to that, to avoid using the Raspberry Pi built in audio which in my experience can behave in "interesting ways".
 
