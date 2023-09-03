@@ -37,3 +37,15 @@ The problems I had may be due to the OS waiting for network connection, and it m
 
 ## Files
 [flows.json]  An export of the flows in my node red. Mostly samples and debug stuff. Only one flow (that starts with Pin 7) is used, as far as I can remember.
+
+## Node red packages I have installed (may be some surplus)
+- node-red-contrib-micropi
+- node-red-contrib-play-audio
+- node-red-node-pi-gpio
+- node-red-node-ping
+- node-red-node-random
+- node-red-node-serialport
+- node-red-node-smooth
+
+# tst
+
