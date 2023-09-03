@@ -32,3 +32,5 @@ I did not use the “rotary” and “dial” part of the circuit, because it wa
 # Warning / caveat
 Test your finished project/phone for changes in network access. You've probably built it at home/in your workshop with (good) access to one Wifi network. If you bring it with you to another venue the network is going to be different/non-existing. Verify that it still works as it should. The version of RPi and OS I used was a bit picky, so I turned off the networking in the phone (RPI) before we took it to the wedding. Another solution is of course to bring an access point with you that preserves the networking environment the RPi can see...
 (I also brought screen, mouse, keyboard, spare parts etc in my car, because I'm an engineer, and believe that Murphy was an optimist...)
+
+The problems I had may be due to the OS waiting for network connection, and it may be solved by setting ”S6 Network at Boot” in raspi-config to not wait for network, but I would definitely verify before relying on it.
