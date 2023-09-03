@@ -28,6 +28,21 @@ I figured out how the mechanics of the phone worked, and there was an unused set
 So on this schematic: https://content.instructables.com/FSH/ERAR/HXMUWMGR/FSHERARHXMUWMGR.png
 I did not use the “rotary” and “dial” part of the circuit, because it was a push-button phone, and I won’t be using it to make calls.
 
+## Components I used
+
+- Diavox phone
+- Handset for mobile phones
+- 3,5mm headset to mic+stereo headphone split cable (TRRS to TS+TRS)
+- USB sound card
+- Short USB cable (for freer positioning of components inside phone)
+- Raspberry PI 4 (overkill ?, but I had one available, and did all development on it).
+
+- During programming:
+- Micro-HDMI - HDMI adapter cable suitable for Raspberry Pi 4
+- HDMI cable
+- Keyboard + Mouse
+- Screen 
+
 # Warning / caveat
 Test your finished project/phone for changes in network access. You've probably built it at home/in your workshop with (good) access to one Wifi network. If you bring it with you to another venue the network is going to be different/non-existing. Verify that it still works as it should. The version of RPi and OS I used was a bit picky, so I turned off the networking in the phone (RPI) before we took it to the wedding. Another solution is of course to bring an access point with you that preserves the networking environment the RPi can see...
 (I also brought screen, mouse, keyboard, spare parts etc in my car, because I'm an engineer, and believe that Murphy was an optimist...)
