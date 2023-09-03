@@ -1,4 +1,3 @@
-(text dump from e-mail, so wording may be strange) 
 # guest book telephone project.
 ## Level of ambition
 Please note that this was never intended to be a well documented project for further development or education. It was a quick lash-up for my youngest daughter's wedding. 
@@ -36,9 +35,11 @@ Test your finished project/phone for changes in network access. You've probably 
 The problems I had may be due to the OS waiting for network connection, and it may be solved by setting ”S6 Network at Boot” in raspi-config to not wait for network, but I would definitely verify before relying on it.
 
 ## Files
-[flows.json](/flows.json)  An export of the flows in my node red. Mostly samples and debug stuff. Only one flow (that starts with Pin 7) is used, as far as I can remember.
-do_audiobackup
-do_audiobackup2
+- [flows.json](/flows.json)  An export of the flows in my node red. Mostly samples and debug stuff. Only one flow (that starts with Pin 7) is used, as far as I can remember.
+- [do_audiobackup](/do_audiobackup) Start background backup of audio files and quickly return.
+- [do_audiobackup2](/do_audiobackup2) Do actual backup.
+- [prompts16.wav](/prompts16.wav) Prompt message we used at the wedding.
+- [do_rename](/do_rename) A limitation with the node used for recording is that it uses the same file name every time. This program renames the previous recording (to make room for a new) and plays the recorded greeting. So, notice that the time stamp is for the renaming and not the recording. (If you want to re-construct the actual recording timestamp, look at the name of the previously recorded message :) ). Could of course be refined to get time stamp of previous recording and turn that into a new name, but...
 
 ## Node red packages I have installed (may be some surplus)
 - node-red-contrib-micropi
@@ -49,11 +50,11 @@ do_audiobackup2
 - node-red-node-serialport
 - node-red-node-smooth
 
-# Swedish encryption
+## Swedish encryption
 Occasionally there are Swedish words scattered amongst the files. 
 - *Lur* means handset/receiver
   
-# General flow in Node Red
+## General flow in Node Red
  ![Flow](/flow.png)
 From left to right.
 1. Something happens at Pin 7. (Which is connected to the handset "sensor").
@@ -70,4 +71,11 @@ From left to right.
 
 This is a very simple and brutal approach. Worked for me.
 The do_audiobackup has two stages. The first just kicks off the second one and returns as quickly as possible to the flow. The second one runs in the background and does any copying. If a file has already been copied, and exists on the target media, then it is not copied again. Works for the relatively limited number of greetings for one night. Room for improved sophistication if you expect to have thousands of files...
+
+## Misc
+
+I believe I used this to have node-red running on boot
+
+    $ sudo systemctl enable nodered.service
+
 
