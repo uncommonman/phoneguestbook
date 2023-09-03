@@ -121,13 +121,19 @@ Board with dust shield off. Notice that I had removed all original cabling betwe
  ![06](/z_06_handset_switch_pins.png)
  Close up:
  ![07](/z_07_handset_switch_pins_closeup.png)
- ![08](/)
- ![09](/)
- ![10](/)
- ![11](/)
- ![12](/)
- ![13](/)
- ![14](/)
+
+ What it looks like with board gone:
+ ![08](/z_08_buttons_removed.png)
+ 
+ To remove back part, first poke screws out:
+ ![09](/z_09_poke_out_screws_1.png)
+ ![10](/z_10_poke_out_screws_2.png)
+ ![11](/z_11_push_to_open_1.png)
+
+ Push from sides to open
+ ![12](/z_12_push_to_open_2.png)
+ ![13](/z_13_push_to_open_3.png)
+ ![14](/z_14_fully_opened.png)
  
  
 
