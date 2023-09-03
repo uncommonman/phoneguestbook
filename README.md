@@ -39,6 +39,8 @@ I did not use the “rotary” and “dial” part of the circuit, because it wa
 - Power supply. Replacing the old phone's phone cable to the wall.
 - USB memory stick (for backup, and transfer of files to be given as a gift to the married couple. Just remember to have a new one available to actually give away, if you like me had set it up to mount explicitly. Without it the right one, the system didn't boot properly...)
 
+ ![Packages of some components](/z_00_packages_of_components.png)
+
 Optional:
 - Lock and locking wire. It would have been sad to lose it in the night, or have it unknowingly be yanked from the wall power.
   
@@ -97,5 +99,36 @@ The do_audiobackup has two stages. The first just kicks off the second one and r
 I believe I used this to have node-red running on boot
 
     $ sudo systemctl enable nodered.service
+
+## Getting in
+
+Overview:
+ ![01](/z_01_overview.png)
+
+Loosen these two (deeply recessed) screws:
+ ![02](/z_02_remove_screws.png)
+
+Take off lid:
+ ![03](/z_03_lid_off.png)
+
+ Lift from front (loosen front of circuit board, thumb(s) down in slot or similar):
+ ![04](/z_04_lift_front.png)
+
+Board with dust shield off. Notice that I had removed all original cabling between board, handset, wall cable, and ringer system. 
+ ![05](/z_05_dustshield_off.png)
+
+ Where I attached the "sensor" wires:
+ ![06](/z_06_handset_switch_pins.png)
+ Close up:
+ ![07](/z_07_handset_switch_pins_closeup.png)
+ ![08](/)
+ ![09](/)
+ ![10](/)
+ ![11](/)
+ ![12](/)
+ ![13](/)
+ ![14](/)
+ 
+ 
 
 
