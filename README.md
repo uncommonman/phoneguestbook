@@ -47,5 +47,25 @@ The problems I had may be due to the OS waiting for network connection, and it m
 - node-red-node-serialport
 - node-red-node-smooth
 
-# tst
+# Swedish encryption
+Occasionally there are Swedish words scattered amongst the files. 
+- *Lur* means handset/receiver
+  
+# General flow in Node Red
+ ![Flow](/flow.png)
+From left to right.
+1. Something happens at Pin 7. (Which is connected to the handset "sensor").
+2. The Switch node figures out if it was lifting or putting down the handset that happened.
+3. The upper flow is for handset lifted.
+  1. Rename previous recording from default name to one with a timestamp.
+  2. Set input to true for recording stage.
+  3. Start recording.
+  4. Kick off backup of audio to USB stick.
+5. The lower flow is form handset put down again.
+  6. Set input to false to stop recording
+  7. Stop recording
+  8. Kick off backup of audio to USB stick.
 
+This is a very simple and brutal approach. Worked for me.
+The do_audiobackup has two stages. The first just kicks off the second one and returns as quickly as possible to the flow. The second one runs in the background and does any copying. If a file has already been copied, and exists on the target media, then it is not copied again. Works for the relatively limited number of greetings for one night. Room for improved sophistication if you expect to have thousands of files...
+9. 
