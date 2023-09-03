@@ -34,3 +34,6 @@ Test your finished project/phone for changes in network access. You've probably 
 (I also brought screen, mouse, keyboard, spare parts etc in my car, because I'm an engineer, and believe that Murphy was an optimist...)
 
 The problems I had may be due to the OS waiting for network connection, and it may be solved by setting ”S6 Network at Boot” in raspi-config to not wait for network, but I would definitely verify before relying on it.
+
+## Files
+[flows.json]  An export of the flows in my node red. Mostly samples and debug stuff. Only one flow (that starts with Pin 7) is used, as far as I can remember.
