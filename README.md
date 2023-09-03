@@ -36,8 +36,13 @@ I did not use the “rotary” and “dial” part of the circuit, because it wa
 - USB sound card
 - Short USB cable (for freer positioning of components inside phone)
 - Raspberry PI 4 (overkill ?, but I had one available, and did all development on it).
+- Power supply. Replacing the old phone's phone cable to the wall.
+- USB memory stick (for backup, and transfer of files to be given as a gift to the married couple. Just remember to have a new one available to actually give away, if you like me had set it up to mount explicitly. Without it the right one, the system didn't boot properly...)
 
-- During programming:
+Optional:
+- Lock and locking wire. It would have been sad to lose it in the night, or have it unknowingly be yanked from the wall power.
+  
+During programming:
 - Micro-HDMI - HDMI adapter cable suitable for Raspberry Pi 4
 - HDMI cable
 - Keyboard + Mouse
