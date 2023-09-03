@@ -1,6 +1,10 @@
 (text dump from e-mail, so wording may be strange) 
 # guest book telephone project.
+## Level of ambition
+Please note that this was never intended to be a well documented project for further development or education. It was a quick lash-up for my youngest daughter's wedding. 
+I didn't document progress. No git was installed. This documentation is post factum for people who can accept "inspiration" rather than "instruction".
 
+## More details
 The short overview is:
 
 I took inspiration from this project: https://www.instructables.com/Raspberry-Pi-in-Rotary-Phone/
