@@ -1,0 +1,2 @@
+# Kick it off in the background
+nohup /home/pi/do_audiobackup2 </dev/null >>/home/pi/audiobackup.txt 2>&1 &

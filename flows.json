@@ -1,0 +1,779 @@
+[
+    {
+        "id": "e7017417ed9fc83a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a05c1517.d1b518",
+        "type": "microPi",
+        "z": "e7017417ed9fc83a",
+        "name": "microPi",
+        "filename": "/home/pi/audio/demofil.wav",
+        "domain": "http://localhost:1880/getAudio",
+        "rate": "16000",
+        "bitwidth": "16",
+        "endian": "little",
+        "encoding": "signed-integer",
+        "channels": "1",
+        "silence": "5",
+        "debug": "false",
+        "mode": "",
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "242b3c43.2ee8c4"
+            ],
+            [
+                "2312eb0a.f1b494"
+            ],
+            [
+                "f3a1701c.f7b0e"
+            ]
+        ]
+    },
+    {
+        "id": "cf008b0c.048058",
+        "type": "inject",
+        "z": "e7017417ed9fc83a",
+        "name": "record",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "a05c1517.d1b518"
+            ]
+        ]
+    },
+    {
+        "id": "12db4a9.adbb7b5",
+        "type": "inject",
+        "z": "e7017417ed9fc83a",
+        "name": "stop",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "a05c1517.d1b518"
+            ]
+        ]
+    },
+    {
+        "id": "5769f387.a1d7bc",
+        "type": "http in",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "url": "/record",
+        "method": "post",
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "774db6b2.a11ab8"
+            ]
+        ]
+    },
+    {
+        "id": "34ad42f1.0ff19e",
+        "type": "http in",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "url": "/stop",
+        "method": "post",
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 340,
+        "wires": [
+            [
+                "774db6b2.a11ab8"
+            ]
+        ]
+    },
+    {
+        "id": "774db6b2.a11ab8",
+        "type": "function",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "func": "if(msg.payload.recording == \"true\") {\n    return {payload:true};\n} else if(msg.payload.recording == \"false\"){\n    return {payload:false};\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "a05c1517.d1b518"
+            ]
+        ]
+    },
+    {
+        "id": "242b3c43.2ee8c4",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "Raw L16 Wave Stream",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 730,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2312eb0a.f1b494",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "Wav File as a Buffer and metadata",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "true",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "f3a1701c.f7b0e",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "Status Messages",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 710,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "60d2b323.dcc4bc",
+        "type": "http in",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "url": "/getAudio/",
+        "method": "get",
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 680,
+        "wires": [
+            [
+                "b1982777.ba6068"
+            ]
+        ]
+    },
+    {
+        "id": "b1982777.ba6068",
+        "type": "file in",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "filename": "/home/pi/audio/demo.wav",
+        "format": "",
+        "x": 410,
+        "y": 680,
+        "wires": [
+            [
+                "a84ae484.d92378"
+            ]
+        ]
+    },
+    {
+        "id": "a84ae484.d92378",
+        "type": "http response",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "x": 670,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "447d5e57.866d7",
+        "type": "rpi-gpio in",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "pin": "4",
+        "intype": "down",
+        "debounce": "1000",
+        "read": true,
+        "bcm": true,
+        "x": 130,
+        "y": 1080,
+        "wires": [
+            [
+                "8538a5d42f32a935",
+                "a57e9cbf713a5ea5"
+            ]
+        ]
+    },
+    {
+        "id": "af5c03d6.f7574",
+        "type": "function",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "func": "if(msg.payload === 1)\n{ return {payload:true}; } \nelse \n{ return {payload:false}; }",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 400,
+        "wires": [
+            [
+                "a05c1517.d1b518"
+            ]
+        ]
+    },
+    {
+        "id": "d4606eb3.2b755",
+        "type": "comment",
+        "z": "e7017417ed9fc83a",
+        "name": "MicroPi Node Pack - Demo Flow",
+        "info": "",
+        "x": 190,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4444147.9ebe1ec",
+        "type": "comment",
+        "z": "e7017417ed9fc83a",
+        "name": "Micropi",
+        "info": "",
+        "x": 110,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a7d7f516.3c84d8",
+        "type": "comment",
+        "z": "e7017417ed9fc83a",
+        "name": "Audio Rest Api",
+        "info": "",
+        "x": 140,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "8190c3b6.bccc1",
+        "type": "microphone",
+        "z": "e7017417ed9fc83a",
+        "name": "microphone",
+        "endian": "little",
+        "bitwidth": "16",
+        "encoding": "signed-integer",
+        "channels": "1",
+        "rate": "22050",
+        "silence": 10,
+        "debug": false,
+        "active": false,
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "76f459d.ca67ba8"
+            ]
+        ]
+    },
+    {
+        "id": "76f459d.ca67ba8",
+        "type": "wav-filewriter",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "path": "/home/pi/audio/f1an.wav",
+        "mode": "700",
+        "x": 370,
+        "y": 540,
+        "wires": [
+            [
+                "ff81bc0.5e39948"
+            ]
+        ]
+    },
+    {
+        "id": "f546a31e.f5eca",
+        "type": "comment",
+        "z": "e7017417ed9fc83a",
+        "name": "Microphone and Wav-Filewriter",
+        "info": "",
+        "x": 190,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ff81bc0.5e39948",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "Wav File as a Buffer",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "true",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "6402839d9d067fdb",
+        "type": "inject",
+        "z": "e7017417ed9fc83a",
+        "name": "record timestamp",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 880,
+        "wires": [
+            [
+                "2edb302800065560"
+            ]
+        ]
+    },
+    {
+        "id": "4e34b84b4789e472",
+        "type": "inject",
+        "z": "e7017417ed9fc83a",
+        "name": "stop",
+        "props": [
+            {
+                "p": "payload",
+                "v": "false",
+                "vt": "bool"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 90,
+        "y": 920,
+        "wires": [
+            [
+                "ac1f73e77b1d062c"
+            ]
+        ]
+    },
+    {
+        "id": "8aa638be3f8e63fc",
+        "type": "change",
+        "z": "e7017417ed9fc83a",
+        "name": "true",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 820,
+        "wires": [
+            [
+                "baab4183bf7693f8",
+                "ac1f73e77b1d062c"
+            ]
+        ]
+    },
+    {
+        "id": "baab4183bf7693f8",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "ac1f73e77b1d062c",
+        "type": "microPi",
+        "z": "e7017417ed9fc83a",
+        "name": "microPi",
+        "filename": "/home/pi/audio/demofil.wav",
+        "domain": "http://localhost:1880/getAudio",
+        "rate": "16000",
+        "bitwidth": "16",
+        "endian": "little",
+        "encoding": "signed-integer",
+        "channels": "1",
+        "silence": "60",
+        "debug": "false",
+        "mode": "",
+        "x": 980,
+        "y": 920,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2edb302800065560",
+        "type": "exec",
+        "z": "e7017417ed9fc83a",
+        "command": "/home/pi/do_rename",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "do_rename",
+        "x": 350,
+        "y": 820,
+        "wires": [
+            [
+                "55a1b8234c07b1eb"
+            ],
+            [],
+            [
+                "8aa638be3f8e63fc"
+            ]
+        ]
+    },
+    {
+        "id": "55a1b8234c07b1eb",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "8538a5d42f32a935",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "a57e9cbf713a5ea5",
+        "type": "switch",
+        "z": "e7017417ed9fc83a",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 310,
+        "y": 1080,
+        "wires": [
+            [
+                "4f73cc05cda3f693",
+                "5a7d95753937bc2b"
+            ],
+            [
+                "509e0dcfa0f405de",
+                "6f5a26c95f30be09"
+            ]
+        ]
+    },
+    {
+        "id": "4f73cc05cda3f693",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "Lur upp branch",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "509e0dcfa0f405de",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "Lur ner branch",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "6f5a26c95f30be09",
+        "type": "change",
+        "z": "e7017417ed9fc83a",
+        "name": "false",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 1160,
+        "wires": [
+            [
+                "39a2c6d4041b468a"
+            ]
+        ]
+    },
+    {
+        "id": "5a7d95753937bc2b",
+        "type": "exec",
+        "z": "e7017417ed9fc83a",
+        "command": "/home/pi/do_rename",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "do_rename",
+        "x": 510,
+        "y": 980,
+        "wires": [
+            [],
+            [],
+            [
+                "78e86b9f3c7294d4"
+            ]
+        ]
+    },
+    {
+        "id": "78e86b9f3c7294d4",
+        "type": "change",
+        "z": "e7017417ed9fc83a",
+        "name": "true",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 980,
+        "wires": [
+            [
+                "39a2c6d4041b468a"
+            ]
+        ]
+    },
+    {
+        "id": "39a2c6d4041b468a",
+        "type": "microPi",
+        "z": "e7017417ed9fc83a",
+        "name": "microPi",
+        "filename": "/home/pi/audio/demofil.wav",
+        "domain": "http://localhost:1880/getAudio",
+        "rate": "16000",
+        "bitwidth": "16",
+        "endian": "little",
+        "encoding": "signed-integer",
+        "channels": "1",
+        "silence": "60",
+        "debug": "false",
+        "mode": "",
+        "x": 880,
+        "y": 1060,
+        "wires": [
+            [],
+            [
+                "2eae6a292222d4f2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e949ad1e3b72868c",
+        "type": "exec",
+        "z": "e7017417ed9fc83a",
+        "command": "/home/pi/do_audiobackup",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "do_audiobackup",
+        "x": 1240,
+        "y": 1060,
+        "wires": [
+            [
+                "db39e884003d7668"
+            ],
+            [
+                "6134899b522aa527"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2eae6a292222d4f2",
+        "type": "change",
+        "z": "e7017417ed9fc83a",
+        "name": "true",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Hupphepp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 1060,
+        "wires": [
+            [
+                "e949ad1e3b72868c"
+            ]
+        ]
+    },
+    {
+        "id": "db39e884003d7668",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "stdout",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1430,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "6134899b522aa527",
+        "type": "debug",
+        "z": "e7017417ed9fc83a",
+        "name": "stderr",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1430,
+        "y": 1080,
+        "wires": []
+    }
+]

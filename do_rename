@@ -1,0 +1,34 @@
+#echo $SHELL
+
+OLD_DIR="/home/pi/audio/"
+OLD_FILENAME="demofil.wav"
+TIMESTAMP=`date +"%y%m%d_%H%M%S"`
+NEW_FILENAME="insp_$TIMESTAMP.wav"
+PROMPT="/home/pi/prompts16.wav"
+
+#echo $TIMESTAMP
+#echo $NEW_FILENAME
+#exit 0
+
+cd $OLD_DIR
+#pwd
+
+if [ ! -f $OLD_FILENAME ]
+then
+  echo "File $OLD_FILENAME does not exist. Nothing to do."
+  aplay $PROMPT
+  exit 0
+fi
+
+fuser $OLD_FILENAME
+BEING_USED=$?
+echo "used: $BEING_USED"
+if [ "$BEING_USED" == "0" ]
+then
+  echo "File in use. Shouldnt happen"
+  exit 2
+fi
+
+echo "Renaming $OLD_FILENAME to $NEW_FILENAME"
+mv $OLD_FILENAME $NEW_FILENAME
+aplay $PROMPT

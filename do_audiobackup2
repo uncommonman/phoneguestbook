@@ -1,0 +1,27 @@
+#echo $SHELL
+# New version: Copy all insp_ files. Don't overwrite
+
+OLD_DIR="/home/pi/audio/"
+OLD_FILENAME="insp_*.wav"
+#NEW_DIR="/media/pi/6A6D-D2CD/audiobackup/"
+NEW_DIR="/media/pi/stickan/audiobackup/"
+
+#exit 0
+
+cd $OLD_DIR
+#pwd
+
+#if [ ! -f $OLD_FILENAME ]
+#then
+  #echo "File $OLD_FILENAME does not exist. Should not happen."
+  #exit 2
+#fi
+
+echo "Copying $OLD_FILENAME to $NEW_DIR"
+for i in $OLD_FILENAME
+do
+  #echo "Copying $i"
+  cp -n $i $NEW_DIR
+done
+#RC=$?
+#exit $RC
